@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "placeholder": false,
+  "sets": [
+    {
+      "name": "street",
+      "bpm": 100.0,
+      "beatsPerBar": 4,
+      "bars": 32,
+      "layers": [
+        "street/L0.ogg",
+        "street/L1.ogg",
+        "street/L2.ogg",
+        "street/L3.ogg"
+      ],
+      "fallback": [
+        "street/L0.m4a",
+        "street/L1.m4a",
+        "street/L2.m4a",
+        "street/L3.m4a"
+      ],
+      "placeholder": false
+    },
+    {
+      "name": "boss",
+      "bpm": 120.0,
+      "beatsPerBar": 4,
+      "bars": 32,
+      "layers": [
+        "boss/L0.ogg",
+        "boss/L1.ogg",
+        "boss/L2.ogg",
+        "boss/L3.ogg"
+      ],
+      "fallback": [
+        "boss/L0.m4a",
+        "boss/L1.m4a",
+        "boss/L2.m4a",
+        "boss/L3.m4a"
+      ],
+      "placeholder": false
+    }
+  ],
+  "stingers": [
+    {
+      "name": "alert",
+      "file": "stingers/alert.ogg",
+      "fallback": "stingers/alert.m4a",
+      "placeholder": false
+    },
+    {
+      "name": "boss_intro",
+      "file": "stingers/boss_intro.ogg",
+      "fallback": "stingers/boss_intro.m4a",
+      "placeholder": false
+    },
+    {
+      "name": "death",
+      "file": "stingers/death.ogg",
+      "fallback": "stingers/death.m4a",
+      "placeholder": false
+    },
+    {
+      "name": "victory",
+      "file": "stingers/victory.ogg",
+      "fallback": "stingers/victory.m4a",
+      "placeholder": false
+    }
+  ]
+}
