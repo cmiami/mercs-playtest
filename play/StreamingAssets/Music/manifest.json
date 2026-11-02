@@ -1,12 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "placeholder": false,
   "sets": [
     {
       "name": "street",
       "bpm": 100.0,
       "beatsPerBar": 4,
-      "bars": 32,
+      "bars": 64,
       "layers": [
         "street/L0.ogg",
         "street/L1.ogg",
@@ -19,13 +19,14 @@
         "street/L2.m4a",
         "street/L3.m4a"
       ],
-      "placeholder": false
+      "placeholder": false,
+      "key": "D minor"
     },
     {
       "name": "boss",
-      "bpm": 120.0,
+      "bpm": 144.0,
       "beatsPerBar": 4,
-      "bars": 32,
+      "bars": 64,
       "layers": [
         "boss/L0.ogg",
         "boss/L1.ogg",
@@ -38,7 +39,78 @@
         "boss/L2.m4a",
         "boss/L3.m4a"
       ],
-      "placeholder": false
+      "placeholder": false,
+      "key": "D minor"
+    },
+    {
+      "name": "hideout",
+      "bpm": 90.0,
+      "beatsPerBar": 4,
+      "bars": 64,
+      "layers": [
+        "hideout/L0.ogg"
+      ],
+      "fallback": [
+        "hideout/L0.m4a"
+      ],
+      "placeholder": false,
+      "key": "D minor",
+      "fixedLevel": 3
+    },
+    {
+      "name": "river",
+      "bpm": 120.0,
+      "beatsPerBar": 4,
+      "bars": 64,
+      "layers": [
+        "river/L0.ogg",
+        "river/L1.ogg",
+        "river/L2.ogg",
+        "river/L3.ogg"
+      ],
+      "fallback": [
+        "river/L0.m4a",
+        "river/L1.m4a",
+        "river/L2.m4a",
+        "river/L3.m4a"
+      ],
+      "placeholder": false,
+      "key": "C minor"
+    },
+    {
+      "name": "river_boss",
+      "bpm": 150.0,
+      "beatsPerBar": 4,
+      "bars": 64,
+      "layers": [
+        "river_boss/L0.ogg",
+        "river_boss/L1.ogg",
+        "river_boss/L2.ogg",
+        "river_boss/L3.ogg"
+      ],
+      "fallback": [
+        "river_boss/L0.m4a",
+        "river_boss/L1.m4a",
+        "river_boss/L2.m4a",
+        "river_boss/L3.m4a"
+      ],
+      "placeholder": false,
+      "key": "C minor"
+    },
+    {
+      "name": "title",
+      "bpm": 96.0,
+      "beatsPerBar": 4,
+      "bars": 64,
+      "layers": [
+        "title/L0.ogg"
+      ],
+      "fallback": [
+        "title/L0.m4a"
+      ],
+      "placeholder": false,
+      "key": "D minor",
+      "fixedLevel": 3
     }
   ],
   "stingers": [
@@ -46,25 +118,95 @@
       "name": "alert",
       "file": "stingers/alert.ogg",
       "fallback": "stingers/alert.m4a",
-      "placeholder": false
+      "placeholder": false,
+      "endsSet": false
     },
     {
       "name": "boss_intro",
       "file": "stingers/boss_intro.ogg",
       "fallback": "stingers/boss_intro.m4a",
-      "placeholder": false
+      "placeholder": false,
+      "endsSet": false
     },
     {
       "name": "death",
       "file": "stingers/death.ogg",
       "fallback": "stingers/death.m4a",
-      "placeholder": false
+      "placeholder": false,
+      "endsSet": false
+    },
+    {
+      "name": "deploy",
+      "file": "stingers/deploy.ogg",
+      "fallback": "stingers/deploy.m4a",
+      "placeholder": false,
+      "endsSet": true
+    },
+    {
+      "name": "mission_complete",
+      "file": "stingers/mission_complete.ogg",
+      "fallback": "stingers/mission_complete.m4a",
+      "placeholder": false,
+      "endsSet": true
+    },
+    {
+      "name": "mission_failed",
+      "file": "stingers/mission_failed.ogg",
+      "fallback": "stingers/mission_failed.m4a",
+      "placeholder": false,
+      "endsSet": true
+    },
+    {
+      "name": "river_boss_intro",
+      "file": "stingers/river_boss_intro.ogg",
+      "fallback": "stingers/river_boss_intro.m4a",
+      "placeholder": false,
+      "endsSet": false
     },
     {
       "name": "victory",
       "file": "stingers/victory.ogg",
       "fallback": "stingers/victory.m4a",
-      "placeholder": false
+      "placeholder": false,
+      "endsSet": false
+    }
+  ],
+  "scenes": [
+    {
+      "scene": "Boot",
+      "set": "title"
+    },
+    {
+      "scene": "Hideout",
+      "set": "hideout"
+    },
+    {
+      "scene": "Street_01",
+      "set": "street",
+      "boss": "boss",
+      "bossIntro": "boss_intro"
+    },
+    {
+      "scene": "River_Transfer",
+      "set": "river",
+      "boss": "river_boss",
+      "bossIntro": "river_boss_intro",
+      "bossAgents": [
+        "Vernon Pike",
+        "BOSS_PIKE"
+      ]
+    },
+    {
+      "scene": "*",
+      "set": "street",
+      "boss": "boss",
+      "bossIntro": "boss_intro"
+    }
+  ],
+  "aliases": [
+    {
+      "name": "street_boss",
+      "set": "boss"
     }
   ]
 }

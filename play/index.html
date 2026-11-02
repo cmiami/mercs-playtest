@@ -41,13 +41,15 @@
     </div>
     <div id="bottom">
       <div id="controls">
-        <span><b>A/D</b> move</span><span><b>W/S</b> stairs, doors, ladders</span><span><b>Shift</b> sprint</span>
-        <span><b>C</b> crouch</span><span><b>Mouse</b> aim</span><span><b>LMB</b> fire</span><span><b>RMB</b> steady aim</span>
-        <span><b>E</b> interact</span><span><b>T</b> taunt</span><span><b>R</b> restart</span><span><b>M</b> music</span><span><b>Esc</b> settings</span>
+        <span><b>A/D</b> move</span><span><b>Space</b> jump, vault</span><span><b>W/S</b> stairs, doors, cover</span>
+        <span><b>Shift</b> sprint</span><span><b>C</b> crouch</span><span><b>Mouse</b> aim</span><span><b>LMB</b> fire</span>
+        <span><b>RMB</b> steady aim</span><span><b>R</b> reload</span><span><b>G</b> grenade</span><span><b>1/2/3</b> guns</span>
+        <span><b>Q</b> quick swap</span><span><b>H</b> stow</span><span><b>E</b> use</span><span><b>Tab</b> inventory</span>
+        <span><b>T</b> taunt</span><span><b>M</b> music</span><span><b>Esc</b> menu</span>
       </div>
       <button id="fullscreen" type="button">Fullscreen</button>
     </div>
-    <script src="Build/Web.loader.js?v=ed6847ee658d4666"></script>
+    <script src="Build/Web.loader.js?v=455b7c67c816d580"></script>
     <script>
       var canvas = document.getElementById("unity-canvas");
       var stage = document.getElementById("stage");
@@ -78,10 +80,11 @@
 
       var config = {
         arguments: [],
-        dataUrl: "Build/Web.data.unityweb?v=bf95bf7955f7cddd",
-        frameworkUrl: "Build/Web.framework.js.unityweb?v=9f92558372e70a8f",
-        codeUrl: "Build/Web.wasm.unityweb?v=4953eae3c6f8dc37",
+        dataUrl: null,
+        frameworkUrl: "Build/Web.framework.js.unityweb?v=0d1368a05a096dd7",
+        codeUrl: "Build/Web.wasm.unityweb?v=fecce5bfea6d211e",
         streamingAssetsUrl: "StreamingAssets",
+        cacheControl: function (url) { return "no-store"; },
         companyName: "Sprites",
         productName: "Mercs",
         productVersion: "1.0",
@@ -91,16 +94,47 @@
         },
       };
 
-      createUnityInstance(canvas, config, function (progress) {
-        document.getElementById("fill").style.width = Math.round(progress * 100) + "%";
-        document.getElementById("status").textContent = progress < 0.9 ? "Loading… " + Math.round(progress * 100) + "%" : "Starting…";
+      // The packed data is over the host's 100 MB file limit, so it ships in parts; they are joined here into one blob
+      // the loader reads as its data file. The parts stay in the browser's HTTP cache between visits.
+      var DATA_PARTS = ["Build/Web.data.unityweb.parta?v=f7ae325b8c8aa107", "Build/Web.data.unityweb.partb?v=cebc0e9c19fcfa92"];
+      var DATA_BYTES = 124323469;
+      function setProgress(fraction, text) {
+        document.getElementById("fill").style.width = Math.round(fraction * 100) + "%";
+        document.getElementById("status").textContent = text;
+      }
+      function fetchData() {
+        var received = 0;
+        return Promise.all(DATA_PARTS.map(function (url) {
+          return fetch(url).then(function (response) {
+            if (!response.ok) throw new Error("Could not download " + url + " (" + response.status + ")");
+            var reader = response.body.getReader(), chunks = [];
+            function pump() {
+              return reader.read().then(function (step) {
+                if (step.done) return new Blob(chunks);
+                chunks.push(step.value);
+                received += step.value.length;
+                var f = Math.min(received / DATA_BYTES, 1);
+                setProgress(f * 0.85, "Loading… " + Math.round(f * 85) + "%");
+                return pump();
+              });
+            }
+            return pump();
+          });
+        })).then(function (blobs) { return URL.createObjectURL(new Blob(blobs)); });
+      }
+
+      fetchData().then(function (dataUrl) {
+        config.dataUrl = dataUrl;
+        return createUnityInstance(canvas, config, function (progress) {
+          setProgress(0.85 + progress * 0.15, progress < 0.9 ? "Loading… " + Math.round(85 + progress * 15) + "%" : "Starting…");
+        });
       }).then(function (unityInstance) {
         window.unityInstance = unityInstance;
         loading.style.display = "none";
         showFocus(true);
         document.getElementById("fullscreen").onclick = function () { unityInstance.SetFullscreen(1); };
       }).catch(function (message) {
-        var s = document.getElementById("status"); s.id = "error"; s.textContent = message;
+        var s = document.getElementById("status"); s.id = "error"; s.textContent = String(message);
       });
     </script>
   </body>
