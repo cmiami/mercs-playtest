@@ -49,7 +49,7 @@
       </div>
       <button id="fullscreen" type="button">Fullscreen</button>
     </div>
-    <script src="Build/Web.loader.js?v=47ca366a7a65ad85"></script>
+    <script src="Build/Web.loader.js?v=fb22bf050e25a2ab"></script>
     <script>
       var canvas = document.getElementById("unity-canvas");
       var stage = document.getElementById("stage");
@@ -81,8 +81,8 @@
       var config = {
         arguments: [],
         dataUrl: null,
-        frameworkUrl: "Build/Web.framework.js.unityweb?v=d991b8845af06a94",
-        codeUrl: "Build/Web.wasm.unityweb?v=3b85992b898a65ae",
+        frameworkUrl: "Build/Web.framework.js.unityweb?v=15ee016036b93051",
+        codeUrl: "Build/Web.wasm.unityweb?v=c2988505b3e21529",
         streamingAssetsUrl: "StreamingAssets",
         cacheControl: function (url) { return "no-store"; },
         companyName: "Sprites",
@@ -96,8 +96,8 @@
 
       // The packed data is over the host's 100 MB file limit, so it ships in parts; they are joined here into one blob
       // the loader reads as its data file. The parts stay in the browser's HTTP cache between visits.
-      var DATA_PARTS = ["Build/Web.data.unityweb.parta?v=d92a81412ec1aa40", "Build/Web.data.unityweb.partb?v=b597021c89c9dfde"];
-      var DATA_BYTES = 124327438;
+      var DATA_PARTS = ["Build/Web.data.unityweb.parta?v=79df92464e24987f", "Build/Web.data.unityweb.partb?v=ea3ae307f8404f5c"];
+      var DATA_BYTES = 124329564;
       function setProgress(fraction, text) {
         document.getElementById("fill").style.width = Math.round(fraction * 100) + "%";
         document.getElementById("status").textContent = text;

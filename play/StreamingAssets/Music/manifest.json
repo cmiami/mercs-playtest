@@ -6,47 +6,51 @@
       "name": "street",
       "bpm": 100.0,
       "beatsPerBar": 4,
-      "bars": 64,
+      "bars": 56,
       "layers": [
         "street/L0.ogg",
-        "street/L1.ogg",
-        "street/L2.ogg",
-        "street/L3.ogg"
+        "street/L1.ogg"
       ],
       "fallback": [
         "street/L0.m4a",
-        "street/L1.m4a",
-        "street/L2.m4a",
-        "street/L3.m4a"
+        "street/L1.m4a"
       ],
       "placeholder": false,
-      "key": "D minor"
+      "key": "D minor",
+      "levelLayer": [
+        0,
+        0,
+        1,
+        1
+      ]
     },
     {
       "name": "boss",
       "bpm": 144.0,
       "beatsPerBar": 4,
-      "bars": 64,
+      "bars": 59,
       "layers": [
         "boss/L0.ogg",
-        "boss/L1.ogg",
-        "boss/L2.ogg",
-        "boss/L3.ogg"
+        "boss/L1.ogg"
       ],
       "fallback": [
         "boss/L0.m4a",
-        "boss/L1.m4a",
-        "boss/L2.m4a",
-        "boss/L3.m4a"
+        "boss/L1.m4a"
       ],
       "placeholder": false,
-      "key": "D minor"
+      "key": "D minor",
+      "levelLayer": [
+        0,
+        0,
+        1,
+        1
+      ]
     },
     {
       "name": "hideout",
       "bpm": 90.0,
       "beatsPerBar": 4,
-      "bars": 64,
+      "bars": 60,
       "layers": [
         "hideout/L0.ogg"
       ],
@@ -61,47 +65,51 @@
       "name": "river",
       "bpm": 120.0,
       "beatsPerBar": 4,
-      "bars": 64,
+      "bars": 59,
       "layers": [
         "river/L0.ogg",
-        "river/L1.ogg",
-        "river/L2.ogg",
-        "river/L3.ogg"
+        "river/L1.ogg"
       ],
       "fallback": [
         "river/L0.m4a",
-        "river/L1.m4a",
-        "river/L2.m4a",
-        "river/L3.m4a"
+        "river/L1.m4a"
       ],
       "placeholder": false,
-      "key": "C minor"
+      "key": "C minor",
+      "levelLayer": [
+        0,
+        0,
+        1,
+        1
+      ]
     },
     {
       "name": "river_boss",
       "bpm": 150.0,
       "beatsPerBar": 4,
-      "bars": 64,
+      "bars": 59,
       "layers": [
         "river_boss/L0.ogg",
-        "river_boss/L1.ogg",
-        "river_boss/L2.ogg",
-        "river_boss/L3.ogg"
+        "river_boss/L1.ogg"
       ],
       "fallback": [
         "river_boss/L0.m4a",
-        "river_boss/L1.m4a",
-        "river_boss/L2.m4a",
-        "river_boss/L3.m4a"
+        "river_boss/L1.m4a"
       ],
       "placeholder": false,
-      "key": "C minor"
+      "key": "C minor",
+      "levelLayer": [
+        0,
+        0,
+        1,
+        1
+      ]
     },
     {
       "name": "title",
       "bpm": 96.0,
       "beatsPerBar": 4,
-      "bars": 64,
+      "bars": 54,
       "layers": [
         "title/L0.ogg"
       ],
