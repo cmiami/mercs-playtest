@@ -44,12 +44,12 @@
         <span><b>A/D</b> move</span><span><b>Space</b> jump, climb</span><span><b>W/S</b> stairs, doors, cover</span>
         <span><b>Shift</b> sprint</span><span><b>F</b> dash</span><span><b>C</b> crouch</span><span><b>Mouse</b> aim</span><span><b>LMB</b> fire</span>
         <span><b>RMB</b> steady aim</span><span><b>R</b> reload</span><span><b>G</b> grenade</span><span><b>1/2/3</b> guns</span>
-        <span><b>Q</b> quick swap</span><span><b>H</b> stow</span><span><b>E</b> use</span><span><b>Tab</b> inventory</span>
+        <span><b>Q</b> quick swap</span><span><b>H</b> stow</span><span><b>E</b> use, takedown</span><span><b>Tab</b> inventory</span>
         <span><b>T</b> taunt</span><span><b>M</b> music</span><span><b>Esc</b> menu</span>
       </div>
       <button id="fullscreen" type="button">Fullscreen</button>
     </div>
-    <script src="Build/Web.loader.js?v=7dbf20db2cb7a7e3"></script>
+    <script src="Build/Web.loader.js?v=301c37794fee916c"></script>
     <script>
       var canvas = document.getElementById("unity-canvas");
       var stage = document.getElementById("stage");
@@ -81,8 +81,8 @@
       var config = {
         arguments: [],
         dataUrl: null,
-        frameworkUrl: "Build/Web.framework.js.unityweb?v=03b0a2f2695d5f2e",
-        codeUrl: "Build/Web.wasm.unityweb?v=6322bf4bc0406fa4",
+        frameworkUrl: "Build/Web.framework.js.unityweb?v=b7cd5110d158d298",
+        codeUrl: "Build/Web.wasm.unityweb?v=31d0dbdaea9d41c9",
         streamingAssetsUrl: "StreamingAssets",
         cacheControl: function (url) { return "no-store"; },
         companyName: "Sprites",
@@ -96,8 +96,8 @@
 
       // The packed data is over the host's 100 MB file limit, so it ships in parts; they are joined here into one blob
       // the loader reads as its data file. The parts stay in the browser's HTTP cache between visits.
-      var DATA_PARTS = ["Build/Web.data.unityweb.parta?v=672ff1965d5e3053", "Build/Web.data.unityweb.partb?v=db920b2e8bbe6418"];
-      var DATA_BYTES = 123941956;
+      var DATA_PARTS = ["Build/Web.data.unityweb.parta?v=efb559b135ee9078", "Build/Web.data.unityweb.partb?v=371f7a87af55f865"];
+      var DATA_BYTES = 124184090;
       function setProgress(fraction, text) {
         document.getElementById("fill").style.width = Math.round(fraction * 100) + "%";
         document.getElementById("status").textContent = text;
